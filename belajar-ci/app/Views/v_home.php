@@ -141,8 +141,14 @@
         foreach ($games as $game): ?>
         <div class="col-6 col-lg-3">
             <div class="product-card p-3 h-100">
-                <div class="ratio ratio-1x1 rounded-4 mb-3 bg-brand text-white d-flex align-items-center justify-content-center">
-                    <i class="bi bi-<?= esc($game['icon']) ?> fs-1"></i>
+                <div class="ratio ratio-1x1 rounded-4 mb-3 overflow-hidden border">
+                    <?php if ($game['name'] === 'Mobile Legends'): ?>
+                        <img src="<?= base_url('assets/img/mlbb-icon.png') ?>" class="w-100 h-100 object-fit-cover" alt="MLBB">
+                    <?php else: ?>
+                        <div class="bg-brand text-white d-flex align-items-center justify-content-center w-100 h-100">
+                            <i class="bi bi-<?= esc($game['icon']) ?> fs-1"></i>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <h5 class="mb-1"><?= esc($game['name']) ?></h5>
                 <p class="small text-soft mb-3"><?= esc($game['provider']) ?></p>

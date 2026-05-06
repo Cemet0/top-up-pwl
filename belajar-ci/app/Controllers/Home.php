@@ -32,7 +32,7 @@ class Home extends BaseController
 
     public function detailMlbb(): string
     {
-        return $this->page('detail-mlbb');
+        return $this->page('detail_mlbb');
     }
 
     public function payment(): string

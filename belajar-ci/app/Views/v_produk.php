@@ -31,8 +31,14 @@
     <div class="col-6 col-lg-3">
         <div class="product-card h-100 p-3">
             <div class="position-relative mb-3">
-                <div class="ratio ratio-4x3 rounded-4 bg-brand text-white d-flex align-items-center justify-content-center">
-                    <i class="bi bi-<?= esc($product['icon']) ?> display-5"></i>
+                <div class="ratio ratio-4x3 rounded-4 overflow-hidden border">
+                    <?php if ($product['title'] === 'Mobile Legends'): ?>
+                        <img src="<?= base_url('assets/img/mlbb-icon.png') ?>" class="w-100 h-100 object-fit-cover" alt="MLBB">
+                    <?php else: ?>
+                        <div class="bg-brand text-white d-flex align-items-center justify-content-center w-100 h-100">
+                            <i class="bi bi-<?= esc($product['icon']) ?> display-5"></i>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <span class="badge text-bg-light position-absolute top-0 end-0 m-2 rounded-pill border"><?= esc($product['badge']) ?></span>
             </div>
