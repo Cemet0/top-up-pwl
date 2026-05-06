@@ -9,17 +9,17 @@ class ProdukController extends BaseController
 {
     public function index()
     {
-        return view('v_produk');
+        return view('produk');
         //
     }
 
     public function detail_mlbb()
     {
-        return view('v_detail_mlbb');
+        return view('detail-mlbb');
     }
 
     public function payment()
     {
-        return view('v_payment');
+        return view('payment');
     }
 }
