@@ -48,68 +48,63 @@
 </section>
 
 <section class="mb-5">
-    <div class="row g-3">
-        <div class="col-md-4">
-            <div class="feature-card p-4 h-100">
-                <div class="mb-3 text-brand fs-3"><i class="bi bi-bag-check"></i></div>
-                <h5>Transaksi yang jelas</h5>
-                <p class="mb-0 text-soft">Setiap pesanan punya alur yang mudah dipahami dari katalog, keranjang, sampai pembayaran.</p>
-            </div>
+    <div class="promo-section p-4 rounded-4 position-relative overflow-hidden" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 26px 60px rgba(0,0,0,0.16);">
+        <div class="mb-3">
+            <span class="section-kicker mb-2"><i class="bi bi-stars"></i> Penawaran Spesial</span>
+            <p class="text-soft small mb-0 mt-1">Jangan lewatkan penawaran spesial kami! Temukan harga terbaik dan diskon eksklusif sekarang.</p>
         </div>
-        <div class="col-md-4">
-            <div class="feature-card p-4 h-100">
-                <div class="mb-3 text-brand fs-3"><i class="bi bi-stopwatch"></i></div>
-                <h5>Proses cepat</h5>
-                <p class="mb-0 text-soft">Dashboard diringkas supaya operator dan pelanggan bisa melihat status top up tanpa kebingungan.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="feature-card p-4 h-100">
-                <div class="mb-3 text-brand fs-3"><i class="bi bi-chat-dots"></i></div>
-                <h5>Support responsif</h5>
-                <p class="mb-0 text-soft">Kontak dan informasi layanan ditempatkan di area yang mudah dijangkau saat pelanggan butuh bantuan.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="row g-4 align-items-center mb-5">
-    <div class="col-lg-6">
-        <div class="soft-card p-4 p-lg-5 h-100">
-            <span class="section-kicker mb-3"><i class="bi bi-building"></i> Tentang Kami</span>
-            <h2 class="mb-3">Dante Store dibangun untuk kebutuhan top up yang cepat dan profesional.</h2>
-            <p class="text-soft mb-4">Kami menempatkan company profile, katalog game, dan dashboard operasional dalam satu pengalaman yang konsisten. Tujuannya agar user langsung paham apa yang ditawarkan tanpa harus mencari-cari menu yang tersembunyi.</p>
-            <div class="row g-3">
-                <div class="col-sm-6">
-                    <div class="summary-card p-3 h-100">
-                        <div class="fw-bold">100% responsif</div>
-                        <div class="small text-soft">Nyaman di laptop maupun ponsel.</div>
+        <div class="row g-3">
+            <?php
+            $promos = [
+                [
+                    'title'    => '1 Month VIP',
+                    'discount' => '51%',
+                    'original' => 'Rp56.000',
+                    'price'    => 'Rp27.467',
+                    'color'    => '#28a745',
+                    'icon'     => 'star-fill',
+                ],
+                [
+                    'title'    => '3 Month VIP',
+                    'discount' => '46,4%',
+                    'original' => 'Rp135.000',
+                    'price'    => 'Rp72.311',
+                    'color'    => '#125dff',
+                    'icon'     => 'star-half',
+                ],
+                [
+                    'title'    => '12 Month VIP',
+                    'discount' => '43,9%',
+                    'original' => 'Rp449.000',
+                    'price'    => 'Rp251.687',
+                    'color'    => '#e83e8c',
+                    'icon'     => 'gem',
+                ],
+            ];
+            foreach ($promos as $promo): ?>
+            <div class="col-md-4">
+                <div class="feature-card p-3 h-100 position-relative overflow-hidden" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);">
+                    <!-- Discount badge -->
+                    <div class="position-absolute top-0 end-0">
+                        <div class="px-2 py-1 text-white fw-bold" style="background: #e83e8c; font-size: 0.75rem; border-radius: 0 0 0 12px;">
+                            <?= esc($promo['discount']) ?> OFF
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="summary-card p-3 h-100">
-                        <div class="fw-bold">Fokus top up</div>
-                        <div class="small text-soft">Konten disusun khusus untuk kebutuhan game digital.</div>
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="rounded-3 d-flex align-items-center justify-content-center" style="width:48px;height:48px;background:<?= esc($promo['color']) ?>20;">
+                            <i class="bi bi-<?= esc($promo['icon']) ?> fs-4" style="color:<?= esc($promo['color']) ?>"></i>
+                        </div>
+                        <div>
+                            <div class="fw-bold"><?= esc($promo['title']) ?></div>
+                            <span class="badge rounded-pill text-white px-2" style="background:<?= esc($promo['color']) ?>;font-size:0.7rem;">PROMO</span>
+                        </div>
                     </div>
+                    <div class="small text-soft text-decoration-line-through"><?= esc($promo['original']) ?></div>
+                    <div class="fw-bold fs-5" style="color:<?= esc($promo['color']) ?>"><?= esc($promo['price']) ?></div>
+                    <a href="<?= base_url('produk') ?>" class="btn btn-brand w-100 rounded-pill mt-3 btn-sm">Beli Sekarang</a>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <div class="glass-card p-4 p-lg-5">
-            <span class="section-kicker mb-3"><i class="bi bi-diagram-3"></i> Alur Top Up</span>
-            <div class="timeline-card p-3 mb-3">
-                <div class="fw-bold mb-1">1. Pilih game</div>
-                <div class="small text-soft">Buka katalog dan tentukan game yang ingin diisi.</div>
-            </div>
-            <div class="timeline-card p-3 mb-3">
-                <div class="fw-bold mb-1">2. Lengkapi data</div>
-                <div class="small text-soft">Masukkan ID, zone, nominal, dan metode pembayaran.</div>
-            </div>
-            <div class="timeline-card p-3">
-                <div class="fw-bold mb-1">3. Bayar dan cek status</div>
-                <div class="small text-soft">Pembayaran diproses, lalu status pesanan muncul di dashboard.</div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -133,7 +128,7 @@
 
         foreach ($games as $game): ?>
         <div class="col-6 col-lg-3">
-            <div class="product-card p-3 h-100">
+            <div class="product-card p-3 h-100" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);">
                 <div class="ratio ratio-1x1 rounded-4 mb-3 overflow-hidden border">
                     <?php if ($game['name'] === 'Mobile Legends'): ?>
                         <img src="<?= base_url('assets/img/mlbb-icon.png') ?>" class="w-100 h-100 object-fit-cover" alt="MLBB">

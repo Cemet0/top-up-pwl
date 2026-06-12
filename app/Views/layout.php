@@ -71,10 +71,11 @@
         }
 
         .navbar {
-            backdrop-filter: blur(18px);
-            background: rgba(255, 255, 255, 0.84) !important;
-            border-bottom: 1px solid var(--line);
-            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            background: rgba(255, 255, 255, 0.45) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
         }
 
         .navbar-brand {
@@ -381,7 +382,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.22);">
         <div class="container py-2">
             <a class="navbar-brand fw-bold d-flex align-items-center gap-3" href="<?= base_url('/') ?>">
                 <span class="brand-mark"><i class="bi bi-lightning-charge-fill"></i></span>
