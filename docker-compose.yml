@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8085:80"
+    volumes:
+      - .:/var/www/html
     environment:
       CI_ENVIRONMENT: development
     restart: unless-stopped

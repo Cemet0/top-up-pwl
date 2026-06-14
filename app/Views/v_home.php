@@ -2,20 +2,21 @@
 
 <?= $this->section('client_content') ?>
 
-<section id="heroCarousel" class="carousel slide hero-full-banner mb-5 overflow-hidden rounded-5 position-relative" data-bs-ride="carousel" data-bs-interval="5000">
+<section id="heroCarousel" class="carousel slide hero-full-banner mb-5 overflow-hidden rounded-5 position-relative" data-bs-ride="carousel" data-bs-interval="4000">
     <!-- Indicators/Dots -->
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
 
     <!-- Carousel Items -->
     <div class="carousel-inner h-100">
-        <!-- Slide 1 -->
+        <!-- Slide 1: Dante Store Official -->
         <div class="carousel-item active h-100">
             <!-- Main Banner Image -->
             <div class="banner-image-container">
-                <img src="<?= base_url('assets/img/image.png') ?>" class="banner-img" alt="Hero Banner 1">
+                <img src="<?= base_url('assets/img/Banner DS.png') ?>" class="banner-img" alt="Hero Banner 1">
                 <div class="banner-overlay"></div>
             </div>
 
@@ -47,11 +48,75 @@
             </div>
         </div>
 
-        <!-- Slide 2 -->
+        <!-- Slide 2: Mobile Legends -->
         <div class="carousel-item h-100">
             <!-- Main Banner Image -->
             <div class="banner-image-container">
-                <img src="<?= base_url('assets/img/Banner DS.png') ?>" class="banner-img" alt="Hero Banner 2">
+                <img src="<?= base_url('assets/img/bannerMl.png') ?>" class="banner-img" alt="Hero Banner 2">
+                <div class="banner-overlay"></div>
+            </div>
+
+            <!-- Text Content Over Image -->
+            <div class="banner-content position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="z-index: 10;">
+                <div class="container text-start ps-4 ps-lg-5">
+                    <div class="hero-badge-small mb-3">
+                        <i class="bi bi-fire me-2"></i> Game Terpopuler
+                    </div>
+                    
+                    <h2 class="fw-800 mb-2 text-white font-space-grotesk" style="font-size: 2.2rem; max-width: 500px; line-height: 1.2;">
+                        Top Up <span class="text-gradient-gold">Diamonds</span> <br>
+                        Mobile Legends: Bang Bang
+                    </h2>
+                    
+                    <p class="mb-4 text-white opacity-80" style="max-width: 450px; font-size: 0.95rem;">
+                        Dapatkan Diamond MLBB termurah dan tercepat langsung masuk ke akun game Anda. Selesaikan pembelian Anda sekarang juga!
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="<?= base_url('detail-mlbb') ?>" class="btn btn-gradient-primary btn-sm rounded-pill px-4 py-2 fw-bold shadow-lg">
+                            Beli Sekarang <i class="bi bi-lightning-charge-fill ms-1"></i>
+                        </a>
+                        <a href="<?= base_url('produk') ?>" class="btn btn-glass-dark btn-sm rounded-pill px-4 py-2 fw-bold text-white">
+                            Lihat Game Lain
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Valorant -->
+        <div class="carousel-item h-100">
+            <!-- Main Banner Image -->
+            <div class="banner-image-container">
+                <img src="<?= base_url('assets/img/bannerValo.png') ?>" class="banner-img" alt="Hero Banner 3">
+                <div class="banner-overlay"></div>
+            </div>
+
+            <!-- Text Content Over Image -->
+            <div class="banner-content position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="z-index: 10;">
+                <div class="container text-start ps-4 ps-lg-5">
+                    <div class="hero-badge-small mb-3">
+                        <i class="bi bi-stars me-2"></i> Promo Terbatas
+                    </div>
+                    
+                    <h2 class="fw-800 mb-2 text-white font-space-grotesk" style="font-size: 2.2rem; max-width: 500px; line-height: 1.2;">
+                        Valorant Points <br>
+                        <span class="text-gradient-cyan">Harga Spesial</span>
+                    </h2>
+                    
+                    <p class="mb-4 text-white opacity-80" style="max-width: 450px; font-size: 0.95rem;">
+                        Beli Valorant Points untuk membuka Skin Senjata dan Agent favorit Anda. Proses otomatis hanya dalam hitungan detik.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="<?= base_url('produk') ?>" class="btn btn-gradient-primary btn-sm rounded-pill px-4 py-2 fw-bold shadow-lg">
+                            Beli Sekarang <i class="bi bi-lightning-charge-fill ms-1"></i>
+                        </a>
+                        <a href="#" class="btn btn-glass-dark btn-sm rounded-pill px-4 py-2 fw-bold text-white">
+                            Hubungi Kami
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -68,10 +133,10 @@
 
     <!-- Floating Status Overlays (static on top of slider) -->
     <div class="banner-status-container d-none d-lg-block">
-        <div class="floating-badge success-badge glass-morphism animate-float">
+        <div class="floating-badge success-badge glass-morphism animate-float" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
             <i class="bi bi-patch-check-fill text-success"></i> 10.000+ Transaksi Berhasil
         </div>
-        <div class="floating-badge secure-badge glass-morphism animate-float-delayed">
+        <div class="floating-badge secure-badge glass-morphism animate-float-delayed" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
             <i class="bi bi-shield-lock-fill text-primary"></i> 100% Aman & Terpercaya
         </div>
     </div>
