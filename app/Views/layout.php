@@ -64,18 +64,27 @@
         }
 
         .site-shell,
-        .site-footer,
-        .navbar {
+        .site-footer {
             position: relative;
             z-index: 1;
         }
 
         .navbar {
-            backdrop-filter: blur(28px);
-            -webkit-backdrop-filter: blur(28px);
-            background: rgba(255, 255, 255, 0.45) !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+            backdrop-filter: blur(40px) saturate(220%) contrast(95%);
+            -webkit-backdrop-filter: blur(40px) saturate(220%) contrast(95%);
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 
+                inset 0 1px 0 rgba(255, 255, 255, 0.45), 
+                0 8px 32px rgba(15, 23, 42, 0.06);
+            position: sticky !important;
+            top: 0;
+            z-index: 1020;
+        }
+
+        .navbar > .container {
+            position: relative;
+            z-index: 2;
         }
 
         .navbar-brand {
@@ -195,12 +204,21 @@
         .site-footer-wide {
             padding: 4rem 0 3rem;
             color: var(--muted);
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.88);
-            border-top: 1px solid var(--line);
-            box-shadow: 0 -8px 30px rgba(15, 23, 42, 0.04);
+            backdrop-filter: blur(40px) saturate(220%) contrast(95%);
+            -webkit-backdrop-filter: blur(40px) saturate(220%) contrast(95%);
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 
+                inset 0 1px 0 rgba(255, 255, 255, 0.45), 
+                0 -8px 32px rgba(15, 23, 42, 0.05);
             position: relative;
             z-index: 10;
+            overflow: hidden;
+        }
+
+        .site-footer-wide > .container {
+            position: relative;
+            z-index: 2;
         }
 
         .footer-brand {
@@ -253,6 +271,17 @@
 
         .quick-link:hover {
             color: var(--brand);
+        }
+
+        /* Custom Dropdown Styling */
+        .dropdown-menu .dropdown-item {
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu .dropdown-item:hover {
+            background: rgba(18, 93, 255, 0.08);
+            transform: translateX(2px);
         }
 
         @media (max-width: 991.98px) {
@@ -368,6 +397,113 @@
             color: white;
         }
 
+        /* Carousel Custom Premium Styles */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 24px;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 12;
+        }
+
+        .carousel-control-prev { left: 0; }
+        .carousel-control-next { right: 0; }
+
+        .hero-full-banner:hover .carousel-control-prev,
+        .hero-full-banner:hover .carousel-control-next {
+            opacity: 1;
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            transform: translateY(-50%) scale(1.08);
+            opacity: 1 !important;
+        }
+
+        .carousel-indicators {
+            bottom: 24px;
+            left: 24px;
+            margin: 0;
+            justify-content: flex-start;
+            gap: 8px;
+            z-index: 12;
+        }
+
+        @media (min-width: 992px) {
+            .carousel-indicators {
+                left: 48px;
+                bottom: 32px;
+            }
+        }
+
+        .carousel-indicators [data-bs-target] {
+            width: 10px;
+            height: 6px;
+            border-radius: 3px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.35);
+            opacity: 1;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .carousel-indicators .active {
+            width: 28px;
+            background: linear-gradient(135deg, #125dff, #00d2ff);
+            box-shadow: 0 0 12px rgba(18, 93, 255, 0.6);
+        }
+
+        /* Slide staggered content transitions */
+        .carousel-item .hero-badge-small,
+        .carousel-item h2,
+        .carousel-item p,
+        .carousel-item .d-flex {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .carousel-item .hero-badge-small {
+            transform: translateY(-16px);
+        }
+
+        .carousel-item.active .hero-badge-small {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.15s;
+        }
+
+        .carousel-item.active h2 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
+        }
+
+        .carousel-item.active p {
+            opacity: 0.8;
+            transform: translateY(0);
+            transition-delay: 0.45s;
+        }
+
+        .carousel-item.active .d-flex {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+
+
         /* Animations */
         .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
         .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; }
@@ -382,7 +518,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.22);">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container py-2">
             <a class="navbar-brand fw-bold d-flex align-items-center gap-3" href="<?= base_url('/') ?>">
                 <span class="brand-mark"><i class="bi bi-lightning-charge-fill"></i></span>
@@ -398,7 +534,40 @@
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
                     <li class="nav-item"><a class="nav-link" href="<?= base_url('/') ?>">Beranda</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= base_url('produk') ?>">Produk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= base_url('keranjang') ?>">Pesanan</a></li>
+                    
+                    <?php if (session()->get('isLoggedIn')): ?>
+                        <?php if (session()->get('role') === 'Client'): ?>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('profile') ?>">Profil & Riwayat</a></li>
+                        <?php endif; ?>
+                        
+                        <li class="nav-item dropdown ms-lg-2">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 py-1 px-3 rounded-pill" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background: rgba(18, 93, 255, 0.1); border: 1px solid rgba(18, 93, 255, 0.2); color: var(--brand);">
+                                <i class="bi bi-person-circle fs-5"></i>
+                                <span><?= esc(session()->get('username')) ?></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end glass-card border-0 shadow-lg p-2" aria-labelledby="userDropdown" style="backdrop-filter: blur(25px); background: rgba(255, 255, 255, 0.85);">
+                                <li>
+                                    <div class="dropdown-header text-dark fw-bold">
+                                        <?= esc(session()->get('username')) ?>
+                                        <small class="d-block text-muted"><?= esc(session()->get('role')) ?></small>
+                                    </div>
+                                </li>
+                                <li><hr class="dropdown-divider opacity-10"></li>
+                                <?php if (session()->get('role') === 'Administrator'): ?>
+                                    <li><a class="dropdown-item rounded-3 text-dark" href="<?= base_url('dashboard') ?>"><i class="bi bi-speedometer2 me-2"></i> Dashboard Admin</a></li>
+                                <?php elseif (session()->get('role') === 'Client'): ?>
+                                    <li><a class="dropdown-item rounded-3 text-dark" href="<?= base_url('profile') ?>"><i class="bi bi-person-badge-fill me-2"></i> Profil Saya</a></li>
+                                <?php endif; ?>
+                                <li><a class="dropdown-item rounded-3 text-danger" href="<?= base_url('logout') ?>"><i class="bi bi-box-arrow-right me-2"></i> Keluar</a></li>
+                            </ul>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item ms-lg-2">
+                            <a class="btn btn-brand btn-sm rounded-pill px-4" href="<?= base_url('login') ?>">
+                                <i class="bi bi-box-arrow-in-right me-1"></i> Masuk / Daftar
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -406,6 +575,20 @@
 
     <main class="site-shell">
         <div class="container">
+            <?php if (session()->getFlashdata('success')): ?>
+                <div class="alert alert-success border-0 rounded-4 shadow-sm py-3 px-4 mb-4 d-flex align-items-center gap-3" role="alert" style="background: rgba(25, 135, 84, 0.12); color: #198754; backdrop-filter: blur(15px);">
+                    <i class="bi bi-patch-check-fill fs-4"></i>
+                    <div><?= session()->getFlashdata('success') ?></div>
+                </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger border-0 rounded-4 shadow-sm py-3 px-4 mb-4 d-flex align-items-center gap-3" role="alert" style="background: rgba(220, 53, 69, 0.12); color: #dc3545; backdrop-filter: blur(15px);">
+                    <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+                    <div><?= session()->getFlashdata('error') ?></div>
+                </div>
+            <?php endif; ?>
+
             <div class="site-content">
                 <div class="page-pad">
                     <?= $this->renderSection('client_content') ?>
@@ -464,5 +647,22 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="<?= base_url('assets/js/fluid-glass.js') ?>"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Navbar liquid glass (iOS 26 style)
+            new FluidGlass('.navbar', {
+                mode: 'navbar',
+                intensity: 1.0
+            });
+
+            // Footer liquid glass (iOS 26 style)
+            new FluidGlass('.site-footer-wide', {
+                mode: 'footer',
+                intensity: 0.95
+            });
+        });
+    </script>
 </body>
 </html>

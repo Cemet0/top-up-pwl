@@ -11,6 +11,12 @@ $routes->get('produk', 'Home::produk');
 $routes->get('keranjang', 'Home::keranjang');
 $routes->get('detail-mlbb', 'Home::detailMlbb');
 $routes->get('payment', 'Home::payment');
+$routes->get('login', 'Home::login');
+$routes->post('login', 'Home::authenticate');
+$routes->post('register', 'Home::register');
+$routes->post('checkout', 'Home::checkout');
+$routes->get('profile', 'Home::profile');
+$routes->get('logout', 'Home::logout');
 
 // Legacy aliases for older links
 $routes->get('v_produk', 'Home::produk');

@@ -50,7 +50,9 @@
     </div>
 </div>
 
-<div class="row g-4">
+<form action="<?= base_url('checkout') ?>" method="POST" class="row g-4">
+    <?= csrf_field() ?>
+
     <div class="col-lg-4">
         <div class="glass-card p-4 sticky-top" style="top: 100px; z-index: 10;">
             <div class="d-flex align-items-center gap-3 mb-4">
@@ -59,11 +61,11 @@
             </div>
             <div class="mb-3">
                 <label class="form-label small fw-bold text-soft">User ID</label>
-                <input type="number" class="form-control form-control-lg border-2" placeholder="Masukkan User ID">
+                <input type="number" class="form-control form-control-lg border-2" placeholder="Masukkan User ID" name="user_id" required>
             </div>
             <div class="mb-4">
                 <label class="form-label small fw-bold text-soft">Zone ID</label>
-                <input type="number" class="form-control form-control-lg border-2" placeholder="Masukkan Zone ID">
+                <input type="number" class="form-control form-control-lg border-2" placeholder="Masukkan Zone ID" name="zone_id" required>
             </div>
             <div class="summary-card p-3 bg-light border-0">
                 <div class="d-flex align-items-center gap-2 mb-2">
@@ -102,7 +104,7 @@
                     $safeId = 'mlbb_nominal_' . $item['id'];
                 ?>
                 <div class="col-6 col-md-4 nominal-card">
-                    <input type="radio" class="btn-check" name="nominal" id="<?= $safeId ?>" autocomplete="off">
+                    <input type="radio" class="btn-check" name="nominal" id="<?= $safeId ?>" value="<?= $item['label'] ?>|<?= $item['price'] ?>" autocomplete="off" required>
                     <label class="btn btn-outline-brand w-100 py-3 rounded-4 h-100 d-flex flex-column justify-content-center transition-all shadow-sm" for="<?= $safeId ?>">
                         <span class="fw-bold fs-5 mb-1"><?= explode(' ', $item['label'])[0] ?></span>
                         <span class="small opacity-75 mb-1">Diamonds</span>
@@ -122,7 +124,7 @@
                 <div class="col-12">
                     <label class="payment-method border p-3 rounded-4 d-flex align-items-center justify-content-between cursor-pointer w-100 mb-2">
                         <div class="d-flex align-items-center">
-                            <input class="form-check-input me-3 border-2" type="radio" name="payment" value="qris">
+                            <input class="form-check-input me-3 border-2" type="radio" name="payment" value="qris" required>
                             <div class="method-details">
                                 <div class="fw-bold">QRIS (All Payment)</div>
                                 <small class="text-soft">Gopay, OVO, ShopeePay, Dana, LinkAja</small>
@@ -134,7 +136,7 @@
                 <div class="col-md-6">
                     <label class="payment-method border p-3 rounded-4 d-flex align-items-center justify-content-between cursor-pointer w-100 h-100">
                         <div class="d-flex align-items-center">
-                            <input class="form-check-input me-3 border-2" type="radio" name="payment" value="dana">
+                            <input class="form-check-input me-3 border-2" type="radio" name="payment" value="dana" required>
                             <div class="method-details">
                                 <div class="fw-bold">DANA</div>
                                 <small class="text-soft">Proses Instan</small>
@@ -146,7 +148,7 @@
                 <div class="col-md-6">
                     <label class="payment-method border p-3 rounded-4 d-flex align-items-center justify-content-between cursor-pointer w-100 h-100">
                         <div class="d-flex align-items-center">
-                            <input class="form-check-input me-3 border-2" type="radio" name="payment" value="shopeepay">
+                            <input class="form-check-input me-3 border-2" type="radio" name="payment" value="shopeepay" required>
                             <div class="method-details">
                                 <div class="fw-bold">ShopeePay</div>
                                 <small class="text-soft">Proses Instan</small>
@@ -171,6 +173,6 @@
             </div>
         </div>
     </div>
-</div>
+</form>
 
 <?= $this->endSection() ?>
