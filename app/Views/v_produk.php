@@ -22,9 +22,9 @@
     <?php
     $products = [
         ['title' => 'Mobile Legends', 'provider' => 'Moonton', 'img' => 'iconMl.png', 'badge' => 'Populer', 'link' => 'detail-mlbb'],
-        ['title' => 'Minecraft', 'provider' => 'Mojang', 'img' => 'iconMcgg.png', 'badge' => 'Cepat', 'link' => '#'],
-        ['title' => 'Valorant', 'provider' => 'Riot Games', 'img' => 'icon valo.jpg', 'badge' => 'Recommended', 'link' => '#'],
-        ['title' => 'Free Fire', 'provider' => 'Garena', 'img' => 'iconff.jpg', 'badge' => 'Best Seller', 'link' => '#'],
+        ['title' => 'Magic Chess Go Go', 'provider' => 'Moonton', 'img' => 'iconMcgg.png', 'badge' => 'Cepat', 'link' => 'detail-mcgg'],
+        ['title' => 'Valorant', 'provider' => 'Riot Games', 'img' => 'icon valo.jpg', 'badge' => 'Recommended', 'link' => 'detail-valorant'],
+        ['title' => 'Free Fire', 'provider' => 'Garena', 'img' => 'iconff.jpg', 'badge' => 'Best Seller', 'link' => 'detail-ff'],
     ];
 
     foreach ($products as $product): ?>

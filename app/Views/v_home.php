@@ -151,9 +151,9 @@
         <?php
         $games = [
             ['name' => 'Mobile Legends', 'provider' => 'Moonton', 'img' => 'iconMl.png', 'link' => 'detail-mlbb'],
-            ['name' => 'Minecraft', 'provider' => 'Mojang', 'img' => 'iconMcgg.png', 'link' => '#'],
-            ['name' => 'Valorant', 'provider' => 'Riot Games', 'img' => 'icon valo.jpg', 'link' => '#'],
-            ['name' => 'Free Fire', 'provider' => 'Garena', 'img' => 'iconff.jpg', 'link' => '#'],
+            ['name' => 'Magic Chess Go Go', 'provider' => 'Moonton', 'img' => 'iconMcgg.png', 'link' => 'detail-mcgg'],
+            ['name' => 'Valorant', 'provider' => 'Riot Games', 'img' => 'icon valo.jpg', 'link' => 'detail-valorant'],
+            ['name' => 'Free Fire', 'provider' => 'Garena', 'img' => 'iconff.jpg', 'link' => 'detail-ff'],
         ];
 
         foreach ($games as $game): ?>

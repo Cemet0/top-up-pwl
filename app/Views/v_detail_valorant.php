@@ -5,7 +5,7 @@
 <style>
     .game-banner {
         height: 240px;
-        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('<?= base_url('assets/img/mlbb-banner.png') ?>');
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('<?= base_url('assets/img/icon valo.jpg') ?>');
         background-size: cover;
         background-position: center;
         border-radius: 24px;
@@ -44,15 +44,15 @@
 
 <div class="game-banner">
     <div class="text-white">
-        <span class="badge rounded-pill bg-primary mb-2">Mobile Legends: Bang Bang</span>
-        <h1 class="display-6 fw-bold mb-0">Top Up Diamonds</h1>
+        <span class="badge rounded-pill bg-danger mb-2">Valorant</span>
+        <h1 class="display-6 fw-bold mb-0">Top Up Points</h1>
         <p class="opacity-75 mb-0">Proses Otomatis 24 Jam Cepat & Aman</p>
     </div>
 </div>
 
 <form action="<?= base_url('checkout') ?>" method="POST" class="row g-4">
     <?= csrf_field() ?>
-    <input type="hidden" name="game_name" value="Mobile Legends">
+    <input type="hidden" name="game_name" value="Valorant">
 
     <div class="col-lg-4">
         <div class="glass-card p-4 sticky-top" style="top: 100px; z-index: 10;">
@@ -61,19 +61,19 @@
                 <h5 class="mb-0">Data Akun</h5>
             </div>
             <div class="mb-3">
-                <label class="form-label small fw-bold text-soft">User ID</label>
-                <input type="number" class="form-control form-control-lg border-2" placeholder="Masukkan User ID" name="user_id" required>
+                <label class="form-label small fw-bold text-soft">Riot ID</label>
+                <input type="text" class="form-control form-control-lg border-2" placeholder="Masukkan Riot ID" name="user_id" required>
             </div>
             <div class="mb-4">
-                <label class="form-label small fw-bold text-soft">Zone ID</label>
-                <input type="number" class="form-control form-control-lg border-2" placeholder="Masukkan Zone ID" name="zone_id" required>
+                <label class="form-label small fw-bold text-soft">Tagline</label>
+                <input type="text" class="form-control form-control-lg border-2" placeholder="Masukkan Tagline (tanpa #)" name="zone_id" required>
             </div>
             <div class="summary-card p-3 bg-light border-0">
                 <div class="d-flex align-items-center gap-2 mb-2">
                     <i class="bi bi-info-circle-fill text-brand"></i>
-                    <span class="small fw-bold">Cara Menemukan User ID</span>
+                    <span class="small fw-bold">Cara Menemukan Riot ID</span>
                 </div>
-                <p class="small text-soft mb-0">Klik pada profil di pojok kiri atas. User ID dan Zone ID tertera di bawah Nama Akun. Contoh: 12345678 (2001).</p>
+                <p class="small text-soft mb-0">Login ke akun Riot Anda. Riot ID dan Tagline dapat dilihat pada menu pengaturan profil. Contoh: PlayerOne (Riot ID) 1234 (Tagline).</p>
             </div>
         </div>
     </div>
@@ -82,33 +82,28 @@
         <div class="glass-card p-4 mb-4">
             <div class="d-flex align-items-center gap-3 mb-4">
                 <div class="step-number">2</div>
-                <h5 class="mb-0">Pilih Nominal Diamonds</h5>
+                <h5 class="mb-0">Pilih Nominal Points</h5>
             </div>
             <div class="row g-3">
                 <?php
                 $nominals = [
-                    ['id' => 5, 'label' => '5 Diamonds', 'price' => 'Rp 1.500'],
-                    ['id' => 12, 'label' => '12 Diamonds', 'price' => 'Rp 3.500'],
-                    ['id' => 19, 'label' => '19 Diamonds', 'price' => 'Rp 5.200'],
-                    ['id' => 28, 'label' => '28 Diamonds', 'price' => 'Rp 8.000'],
-                    ['id' => 44, 'label' => '44 Diamonds', 'price' => 'Rp 12.500'],
-                    ['id' => 59, 'label' => '59 Diamonds', 'price' => 'Rp 16.500'],
-                    ['id' => 85, 'label' => '85 Diamonds', 'price' => 'Rp 23.500'],
-                    ['id' => 170, 'label' => '170 Diamonds', 'price' => 'Rp 46.500'],
-                    ['id' => 296, 'label' => '296 Diamonds', 'price' => 'Rp 82.000'],
-                    ['id' => 408, 'label' => '408 Diamonds', 'price' => 'Rp 112.000'],
-                    ['id' => 568, 'label' => '568 Diamonds', 'price' => 'Rp 155.000'],
-                    ['id' => 875, 'label' => '875 Diamonds', 'price' => 'Rp 238.000'],
+                    ['id' => 125, 'label' => '125 Points', 'price' => 'Rp 15.000'],
+                    ['id' => 420, 'label' => '420 Points', 'price' => 'Rp 50.000'],
+                    ['id' => 700, 'label' => '700 Points', 'price' => 'Rp 80.000'],
+                    ['id' => 1375, 'label' => '1375 Points', 'price' => 'Rp 150.000'],
+                    ['id' => 2400, 'label' => '2400 Points', 'price' => 'Rp 250.000'],
+                    ['id' => 4000, 'label' => '4000 Points', 'price' => 'Rp 400.000'],
+                    ['id' => 8150, 'label' => '8150 Points', 'price' => 'Rp 800.000'],
                 ];
 
                 foreach ($nominals as $item):
-                    $safeId = 'mlbb_nominal_' . $item['id'];
+                    $safeId = 'valo_nominal_' . $item['id'];
                 ?>
                 <div class="col-6 col-md-4 nominal-card">
                     <input type="radio" class="btn-check" name="nominal" id="<?= $safeId ?>" value="<?= $item['label'] ?>|<?= $item['price'] ?>" autocomplete="off" required>
                     <label class="btn btn-outline-brand w-100 py-3 rounded-4 h-100 d-flex flex-column justify-content-center transition-all shadow-sm" for="<?= $safeId ?>">
                         <span class="fw-bold fs-5 mb-1"><?= explode(' ', $item['label'])[0] ?></span>
-                        <span class="small opacity-75 mb-1">Diamonds</span>
+                        <span class="small opacity-75 mb-1">Points</span>
                         <div class="mt-2 pt-2 border-top w-100 fw-bold"><?= $item['price'] ?></div>
                     </label>
                 </div>

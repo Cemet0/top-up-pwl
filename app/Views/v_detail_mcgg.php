@@ -5,7 +5,7 @@
 <style>
     .game-banner {
         height: 240px;
-        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('<?= base_url('assets/img/mlbb-banner.png') ?>');
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('<?= base_url('assets/img/iconMcgg.png') ?>');
         background-size: cover;
         background-position: center;
         border-radius: 24px;
@@ -44,7 +44,7 @@
 
 <div class="game-banner">
     <div class="text-white">
-        <span class="badge rounded-pill bg-primary mb-2">Mobile Legends: Bang Bang</span>
+        <span class="badge rounded-pill bg-success mb-2">Magic Chess Go Go</span>
         <h1 class="display-6 fw-bold mb-0">Top Up Diamonds</h1>
         <p class="opacity-75 mb-0">Proses Otomatis 24 Jam Cepat & Aman</p>
     </div>
@@ -52,7 +52,7 @@
 
 <form action="<?= base_url('checkout') ?>" method="POST" class="row g-4">
     <?= csrf_field() ?>
-    <input type="hidden" name="game_name" value="Mobile Legends">
+    <input type="hidden" name="game_name" value="Magic Chess Go Go">
 
     <div class="col-lg-4">
         <div class="glass-card p-4 sticky-top" style="top: 100px; z-index: 10;">
@@ -73,7 +73,7 @@
                     <i class="bi bi-info-circle-fill text-brand"></i>
                     <span class="small fw-bold">Cara Menemukan User ID</span>
                 </div>
-                <p class="small text-soft mb-0">Klik pada profil di pojok kiri atas. User ID dan Zone ID tertera di bawah Nama Akun. Contoh: 12345678 (2001).</p>
+                <p class="small text-soft mb-0">Buka game Magic Chess Go Go, klik avatar profil. User ID dan Zone ID akan terlihat. Contoh: 12345678 (1234).</p>
             </div>
         </div>
     </div>
@@ -82,27 +82,21 @@
         <div class="glass-card p-4 mb-4">
             <div class="d-flex align-items-center gap-3 mb-4">
                 <div class="step-number">2</div>
-                <h5 class="mb-0">Pilih Nominal Diamonds</h5>
+                <h5 class="mb-0">Pilih Nominal</h5>
             </div>
             <div class="row g-3">
                 <?php
                 $nominals = [
                     ['id' => 5, 'label' => '5 Diamonds', 'price' => 'Rp 1.500'],
-                    ['id' => 12, 'label' => '12 Diamonds', 'price' => 'Rp 3.500'],
-                    ['id' => 19, 'label' => '19 Diamonds', 'price' => 'Rp 5.200'],
-                    ['id' => 28, 'label' => '28 Diamonds', 'price' => 'Rp 8.000'],
-                    ['id' => 44, 'label' => '44 Diamonds', 'price' => 'Rp 12.500'],
-                    ['id' => 59, 'label' => '59 Diamonds', 'price' => 'Rp 16.500'],
-                    ['id' => 85, 'label' => '85 Diamonds', 'price' => 'Rp 23.500'],
-                    ['id' => 170, 'label' => '170 Diamonds', 'price' => 'Rp 46.500'],
-                    ['id' => 296, 'label' => '296 Diamonds', 'price' => 'Rp 82.000'],
-                    ['id' => 408, 'label' => '408 Diamonds', 'price' => 'Rp 112.000'],
-                    ['id' => 568, 'label' => '568 Diamonds', 'price' => 'Rp 155.000'],
-                    ['id' => 875, 'label' => '875 Diamonds', 'price' => 'Rp 238.000'],
+                    ['id' => 14, 'label' => '14 Diamonds', 'price' => 'Rp 4.000'],
+                    ['id' => 42, 'label' => '42 Diamonds', 'price' => 'Rp 12.000'],
+                    ['id' => 70, 'label' => '70 Diamonds', 'price' => 'Rp 20.000'],
+                    ['id' => 140, 'label' => '140 Diamonds', 'price' => 'Rp 40.000'],
+                    ['id' => 344, 'label' => '344 Diamonds', 'price' => 'Rp 100.000'],
                 ];
 
                 foreach ($nominals as $item):
-                    $safeId = 'mlbb_nominal_' . $item['id'];
+                    $safeId = 'mcgg_nominal_' . $item['id'];
                 ?>
                 <div class="col-6 col-md-4 nominal-card">
                     <input type="radio" class="btn-check" name="nominal" id="<?= $safeId ?>" value="<?= $item['label'] ?>|<?= $item['price'] ?>" autocomplete="off" required>

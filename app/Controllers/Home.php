@@ -51,6 +51,21 @@ class Home extends BaseController
         return $this->page('detail_mlbb');
     }
 
+    public function detailValorant(): string
+    {
+        return $this->page('detail_valorant');
+    }
+
+    public function detailFf(): string
+    {
+        return $this->page('detail_ff');
+    }
+
+    public function detailMcgg(): string
+    {
+        return $this->page('detail_mcgg');
+    }
+
     public function payment(): string
     {
         return $this->page('payment');
@@ -146,9 +161,10 @@ class Home extends BaseController
     {
         $session = session();
         $userId = $this->request->getPost('user_id');
-        $zoneId = $this->request->getPost('zone_id');
+        $zoneId = $this->request->getPost('zone_id'); // Untuk Valorant ini bisa berupa tagline
         $nominalRaw = $this->request->getPost('nominal');
         $payment = $this->request->getPost('payment');
+        $gameName = $this->request->getPost('game_name') ?? 'Mobile Legends';
 
         if (empty($userId) || empty($zoneId) || empty($nominalRaw) || empty($payment)) {
             $session->setFlashdata('error', 'Lengkapi data akun, pilihan nominal, dan metode pembayaran.');
@@ -167,7 +183,7 @@ class Home extends BaseController
 
         $transactionData = [
             'transaction_code' => $txCode,
-            'game_name' => 'Mobile Legends',
+            'game_name' => $gameName,
             'nominal' => $nominal,
             'price' => $price,
             'payment_method' => strtoupper($payment),
