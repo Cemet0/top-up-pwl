@@ -150,18 +150,18 @@
     <div class="row g-3">
         <?php
         $games = [
-            ['name' => 'Mobile Legends', 'provider' => 'Moonton', 'icon' => 'controller', 'link' => 'detail-mlbb'],
-            ['name' => 'Free Fire', 'provider' => 'Garena', 'icon' => 'fire', 'link' => '#'],
-            ['name' => 'Genshin Impact', 'provider' => 'HoYoverse', 'icon' => 'gem', 'link' => '#'],
-            ['name' => 'Valorant', 'provider' => 'Riot Games', 'icon' => 'crosshair', 'link' => '#'],
+            ['name' => 'Mobile Legends', 'provider' => 'Moonton', 'img' => 'iconMl.png', 'link' => 'detail-mlbb'],
+            ['name' => 'Minecraft', 'provider' => 'Mojang', 'img' => 'iconMcgg.png', 'link' => '#'],
+            ['name' => 'Valorant', 'provider' => 'Riot Games', 'img' => 'icon valo.jpg', 'link' => '#'],
+            ['name' => 'Free Fire', 'provider' => 'Garena', 'img' => 'iconff.jpg', 'link' => '#'],
         ];
 
         foreach ($games as $game): ?>
         <div class="col-6 col-lg-3">
             <div class="product-card p-3 h-100" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);">
                 <div class="ratio ratio-1x1 rounded-4 mb-3 overflow-hidden border">
-                    <?php if ($game['name'] === 'Mobile Legends'): ?>
-                        <img src="<?= base_url('assets/img/mlbb-icon.png') ?>" class="w-100 h-100 object-fit-cover" alt="MLBB">
+                    <?php if (isset($game['img'])): ?>
+                        <img src="<?= base_url('assets/img/' . $game['img']) ?>" class="w-100 h-100 object-fit-cover" alt="<?= esc($game['name']) ?>">
                     <?php else: ?>
                         <div class="bg-brand text-white d-flex align-items-center justify-content-center w-100 h-100">
                             <i class="bi bi-<?= esc($game['icon']) ?> fs-1"></i>

@@ -21,10 +21,10 @@
 <section class="row g-3">
     <?php
     $products = [
-        ['title' => 'Mobile Legends', 'provider' => 'Moonton', 'icon' => 'controller', 'badge' => 'Populer', 'link' => 'detail-mlbb'],
-        ['title' => 'Free Fire', 'provider' => 'Garena', 'icon' => 'fire', 'badge' => 'Best Seller', 'link' => '#'],
-        ['title' => 'Genshin Impact', 'provider' => 'HoYoverse', 'icon' => 'gem', 'badge' => 'Cepat', 'link' => '#'],
-        ['title' => 'Valorant', 'provider' => 'Riot Games', 'icon' => 'crosshair', 'badge' => 'Recommended', 'link' => '#'],
+        ['title' => 'Mobile Legends', 'provider' => 'Moonton', 'img' => 'iconMl.png', 'badge' => 'Populer', 'link' => 'detail-mlbb'],
+        ['title' => 'Minecraft', 'provider' => 'Mojang', 'img' => 'iconMcgg.png', 'badge' => 'Cepat', 'link' => '#'],
+        ['title' => 'Valorant', 'provider' => 'Riot Games', 'img' => 'icon valo.jpg', 'badge' => 'Recommended', 'link' => '#'],
+        ['title' => 'Free Fire', 'provider' => 'Garena', 'img' => 'iconff.jpg', 'badge' => 'Best Seller', 'link' => '#'],
     ];
 
     foreach ($products as $product): ?>
@@ -32,8 +32,8 @@
         <div class="product-card h-100 p-3">
             <div class="position-relative mb-3">
                 <div class="ratio ratio-4x3 rounded-4 overflow-hidden border">
-                    <?php if ($product['title'] === 'Mobile Legends'): ?>
-                        <img src="<?= base_url('assets/img/mlbb-icon.png') ?>" class="w-100 h-100 object-fit-cover" alt="MLBB">
+                    <?php if (isset($product['img'])): ?>
+                        <img src="<?= base_url('assets/img/' . $product['img']) ?>" class="w-100 h-100 object-fit-cover" alt="<?= esc($product['title']) ?>">
                     <?php else: ?>
                         <div class="bg-brand text-white d-flex align-items-center justify-content-center w-100 h-100">
                             <i class="bi bi-<?= esc($product['icon']) ?> display-5"></i>
