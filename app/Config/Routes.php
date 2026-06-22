@@ -16,6 +16,7 @@ $routes->post('login', 'Home::authenticate');
 $routes->post('register', 'Home::register');
 $routes->post('checkout', 'Home::checkout');
 $routes->get('profile', 'Home::profile');
+$routes->get('profile/download', 'Home::downloadHistory');
 $routes->get('logout', 'Home::logout');
 
 // Legacy aliases for older links

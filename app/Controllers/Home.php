@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Dompdf\Dompdf;
+
 class Home extends BaseController
 {
     private function page(string $view): string
@@ -208,5 +210,32 @@ class Home extends BaseController
     {
         session()->destroy();
         return redirect()->to('/');
+    }
+
+    public function downloadHistory()
+    {
+        $session = session();
+        if (!$session->get('isLoggedIn') || $session->get('role') !== 'Client') {
+            $session->setFlashdata('error', 'Silakan login terlebih dahulu untuk mengunduh profil.');
+            return redirect()->to('login');
+        }
+
+        $transactionModel = new \App\Models\TransactionModel();
+        $transactions = $transactionModel->getByUserId((int)$session->get('id'));
+
+        $html = view('v_download_history', [
+            'transactions' => $transactions,
+            'username' => $session->get('username')
+        ]);
+
+        $filename = date('Y-m-d-H-i-s') . '-riwayat-transaksi.pdf';
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream($filename, [
+            'Attachment' => true
+        ]);
     }
 }
