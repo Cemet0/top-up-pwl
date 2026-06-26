@@ -101,9 +101,14 @@
                     <h4 class="mb-1 fw-bold text-dark">Riwayat Pembelian</h4>
                     <p class="small text-soft mb-0">Daftar transaksi top up game yang telah Anda lakukan.</p>
                 </div>
-                <a href="<?= base_url('produk') ?>" class="btn btn-brand btn-sm rounded-pill px-3">
-                    <i class="bi bi-plus-circle-fill me-1"></i> Top Up Baru
-                </a>
+                <div class="d-flex gap-2">
+                    <a href="<?= base_url('profile/download') ?>" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                        <i class="bi bi-file-earmark-pdf-fill me-1"></i> Download PDF
+                    </a>
+                    <a href="<?= base_url('produk') ?>" class="btn btn-brand btn-sm rounded-pill px-3">
+                        <i class="bi bi-plus-circle-fill me-1"></i> Top Up Baru
+                    </a>
+                </div>
             </div>
 
             <?php if (empty($transactions)): ?>

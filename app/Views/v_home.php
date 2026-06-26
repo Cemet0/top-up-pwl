@@ -2,7 +2,7 @@
 
 <?= $this->section('client_content') ?>
 
-<section id="heroCarousel" class="carousel slide hero-full-banner mb-5 overflow-hidden rounded-5 position-relative" data-bs-ride="carousel" data-bs-interval="5000">
+<section id="heroCarousel" class="carousel slide hero-full-banner mb-5 overflow-hidden rounded-5 position-relative" data-bs-ride="carousel" data-bs-interval="4000">
     <!-- Indicators/Dots -->
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -11,7 +11,7 @@
 
     <!-- Carousel Items -->
     <div class="carousel-inner h-100">
-        <!-- Slide 1 -->
+        <!-- Slide 1: General Hero Banner -->
         <div class="carousel-item active h-100">
             <!-- Main Banner Image -->
             <div class="banner-image-container">
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <!-- Slide 2 -->
+        <!-- Slide 2: Dante Store Official (Plain) -->
         <div class="carousel-item h-100">
             <!-- Main Banner Image -->
             <div class="banner-image-container">
@@ -68,10 +68,10 @@
 
     <!-- Floating Status Overlays (static on top of slider) -->
     <div class="banner-status-container d-none d-lg-block">
-        <div class="floating-badge success-badge glass-morphism animate-float">
+        <div class="floating-badge success-badge glass-morphism animate-float" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
             <i class="bi bi-patch-check-fill text-success"></i> 10.000+ Transaksi Berhasil
         </div>
-        <div class="floating-badge secure-badge glass-morphism animate-float-delayed">
+        <div class="floating-badge secure-badge glass-morphism animate-float-delayed" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
             <i class="bi bi-shield-lock-fill text-primary"></i> 100% Aman & Terpercaya
         </div>
     </div>
