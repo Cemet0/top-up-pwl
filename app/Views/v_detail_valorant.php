@@ -85,29 +85,27 @@
                 <h5 class="mb-0">Pilih Nominal Points</h5>
             </div>
             <div class="row g-3">
-                <?php
-                $nominals = [
-                    ['id' => 125, 'label' => '125 Points', 'price' => 'Rp 15.000'],
-                    ['id' => 420, 'label' => '420 Points', 'price' => 'Rp 50.000'],
-                    ['id' => 700, 'label' => '700 Points', 'price' => 'Rp 80.000'],
-                    ['id' => 1375, 'label' => '1375 Points', 'price' => 'Rp 150.000'],
-                    ['id' => 2400, 'label' => '2400 Points', 'price' => 'Rp 250.000'],
-                    ['id' => 4000, 'label' => '4000 Points', 'price' => 'Rp 400.000'],
-                    ['id' => 8150, 'label' => '8150 Points', 'price' => 'Rp 800.000'],
-                ];
-
-                foreach ($nominals as $item):
-                    $safeId = 'valo_nominal_' . $item['id'];
-                ?>
-                <div class="col-6 col-md-4 nominal-card">
-                    <input type="radio" class="btn-check" name="nominal" id="<?= $safeId ?>" value="<?= $item['label'] ?>|<?= $item['price'] ?>" autocomplete="off" required>
-                    <label class="btn btn-outline-brand w-100 py-3 rounded-4 h-100 d-flex flex-column justify-content-center transition-all shadow-sm" for="<?= $safeId ?>">
-                        <span class="fw-bold fs-5 mb-1"><?= explode(' ', $item['label'])[0] ?></span>
-                        <span class="small opacity-75 mb-1">Points</span>
-                        <div class="mt-2 pt-2 border-top w-100 fw-bold"><?= $item['price'] ?></div>
-                    </label>
-                </div>
-                <?php endforeach; ?>
+                <?php if (!empty($items)): ?>
+                    <?php foreach ($items as $item):
+                        $safeId = 'valo_nominal_' . $item['id'];
+                        $priceFormatted = 'Rp ' . number_format((float)$item['price'], 0, ',', '.');
+                        $unit = implode(' ', array_slice(explode(' ', $item['title']), 1));
+                    ?>
+                    <div class="col-6 col-md-4 nominal-card position-relative">
+                        <input type="radio" class="btn-check" name="nominal" id="<?= $safeId ?>" value="<?= esc($item['title']) ?>|<?= $priceFormatted ?>" autocomplete="off" required>
+                        <label class="btn btn-outline-brand w-100 py-3 rounded-4 h-100 d-flex flex-column justify-content-center transition-all shadow-sm" for="<?= $safeId ?>">
+                            <span class="fw-bold fs-5 mb-1"><?= esc(explode(' ', $item['title'])[0]) ?></span>
+                            <span class="small opacity-75 mb-1"><?= esc($unit ?: 'Points') ?></span>
+                            <?php if ($item['discount']): ?>
+                                <span class="badge text-bg-danger position-absolute top-0 end-0 m-2"><?= esc($item['discount']) ?></span>
+                            <?php endif; ?>
+                            <div class="mt-2 pt-2 border-top w-100 fw-bold"><?= $priceFormatted ?></div>
+                        </label>
+                    </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="col-12 text-center text-muted py-4">Belum ada nominal tersedia.</div>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -117,42 +115,28 @@
                 <h5 class="mb-0">Metode Pembayaran</h5>
             </div>
             <div class="row g-3">
-                <div class="col-12">
-                    <label class="payment-method border p-3 rounded-4 d-flex align-items-center justify-content-between cursor-pointer w-100 mb-2">
-                        <div class="d-flex align-items-center">
-                            <input class="form-check-input me-3 border-2" type="radio" name="payment" value="qris" required>
-                            <div class="method-details">
-                                <div class="fw-bold">QRIS (All Payment)</div>
-                                <small class="text-soft">Gopay, OVO, ShopeePay, Dana, LinkAja</small>
+                <?php if (!empty($payments)): ?>
+                    <?php foreach ($payments as $pm): ?>
+                    <div class="col-md-6">
+                        <label class="payment-method border p-3 rounded-4 d-flex align-items-center justify-content-between cursor-pointer w-100 h-100">
+                            <div class="d-flex align-items-center">
+                                <input class="form-check-input me-3 border-2" type="radio" name="payment" value="<?= esc($pm['code']) ?>" required>
+                                <div class="method-details">
+                                    <div class="fw-bold"><?= esc($pm['name']) ?></div>
+                                    <?php if ((float)$pm['fee'] > 0): ?>
+                                        <small class="text-soft">Biaya admin Rp <?= number_format((float)$pm['fee'], 0, ',', '.') ?></small>
+                                    <?php else: ?>
+                                        <small class="text-soft">Tanpa biaya admin</small>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
-                        <i class="bi bi-qr-code fs-2 text-brand"></i>
-                    </label>
-                </div>
-                <div class="col-md-6">
-                    <label class="payment-method border p-3 rounded-4 d-flex align-items-center justify-content-between cursor-pointer w-100 h-100">
-                        <div class="d-flex align-items-center">
-                            <input class="form-check-input me-3 border-2" type="radio" name="payment" value="dana" required>
-                            <div class="method-details">
-                                <div class="fw-bold">DANA</div>
-                                <small class="text-soft">Proses Instan</small>
-                            </div>
-                        </div>
-                        <i class="bi bi-wallet2 fs-2 text-primary"></i>
-                    </label>
-                </div>
-                <div class="col-md-6">
-                    <label class="payment-method border p-3 rounded-4 d-flex align-items-center justify-content-between cursor-pointer w-100 h-100">
-                        <div class="d-flex align-items-center">
-                            <input class="form-check-input me-3 border-2" type="radio" name="payment" value="shopeepay" required>
-                            <div class="method-details">
-                                <div class="fw-bold">ShopeePay</div>
-                                <small class="text-soft">Proses Instan</small>
-                            </div>
-                        </div>
-                        <i class="bi bi-bag-heart fs-2 text-danger"></i>
-                    </label>
-                </div>
+                            <i class="bi bi-wallet2 fs-2 text-brand"></i>
+                        </label>
+                    </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="col-12 text-center text-muted py-4">Belum ada metode pembayaran.</div>
+                <?php endif; ?>
             </div>
 
             <hr class="my-4 opacity-50">

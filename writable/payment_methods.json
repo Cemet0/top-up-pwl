@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "QRIS",
+        "code": "QRIS",
+        "fee": 0,
+        "created_at": "2026-06-26 17:14:11"
+    },
+    {
+        "id": 2,
+        "name": "DANA",
+        "code": "DANA",
+        "fee": 1000,
+        "created_at": "2026-06-26 17:14:11"
+    },
+    {
+        "id": 3,
+        "name": "ShopeePay",
+        "code": "SHOPEEPAY",
+        "fee": 1000,
+        "created_at": "2026-06-26 17:14:11"
+    },
+    {
+        "id": 4,
+        "name": "GoPay",
+        "code": "GOPAY",
+        "fee": 1000,
+        "created_at": "2026-06-26 17:14:11"
+    },
+    {
+        "id": 5,
+        "name": "OVO",
+        "code": "OVO",
+        "fee": 1000,
+        "created_at": "2026-06-26 17:14:11"
+    },
+    {
+        "id": 6,
+        "name": "BCA Virtual Account",
+        "code": "BCA",
+        "fee": 2500,
+        "created_at": "2026-06-26 17:14:11"
+    },
+    {
+        "id": 7,
+        "name": "Mandiri Virtual Account",
+        "code": "MANDIRI",
+        "fee": 2500,
+        "created_at": "2026-06-26 17:14:11"
+    },
+    {
+        "name": "tes",
+        "code": "tes",
+        "fee": 0,
+        "id": 8,
+        "created_at": "2026-06-26 17:14:21"
+    }
+]

@@ -148,32 +148,28 @@
         <a href="<?= base_url('produk') ?>" class="quick-link fw-bold">Lihat semua produk <i class="bi bi-arrow-right-short"></i></a>
     </div>
     <div class="row g-3">
-        <?php
-        $games = [
-            ['name' => 'Mobile Legends', 'provider' => 'Moonton', 'img' => 'iconMl.png', 'link' => 'detail-mlbb'],
-            ['name' => 'Magic Chess Go Go', 'provider' => 'Moonton', 'img' => 'iconMcgg.png', 'link' => 'detail-mcgg'],
-            ['name' => 'Valorant', 'provider' => 'Riot Games', 'img' => 'icon valo.jpg', 'link' => 'detail-valorant'],
-            ['name' => 'Free Fire', 'provider' => 'Garena', 'img' => 'iconff.jpg', 'link' => 'detail-ff'],
-        ];
-
-        foreach ($games as $game): ?>
-        <div class="col-6 col-lg-3">
-            <div class="product-card p-3 h-100" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);">
-                <div class="ratio ratio-1x1 rounded-4 mb-3 overflow-hidden border">
-                    <?php if (isset($game['img'])): ?>
-                        <img src="<?= base_url('assets/img/' . $game['img']) ?>" class="w-100 h-100 object-fit-cover" alt="<?= esc($game['name']) ?>">
-                    <?php else: ?>
-                        <div class="bg-brand text-white d-flex align-items-center justify-content-center w-100 h-100">
-                            <i class="bi bi-<?= esc($game['icon']) ?> fs-1"></i>
-                        </div>
-                    <?php endif; ?>
+        <?php if (!empty($games)): ?>
+            <?php foreach ($games as $game): ?>
+            <div class="col-6 col-lg-3">
+                <div class="product-card p-3 h-100" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);">
+                    <div class="ratio ratio-1x1 rounded-4 mb-3 overflow-hidden border">
+                        <?php if (!empty($game['img'])): ?>
+                            <img src="<?= base_url('assets/img/' . $game['img']) ?>" class="w-100 h-100 object-fit-cover" alt="<?= esc($game['name']) ?>">
+                        <?php else: ?>
+                            <div class="bg-brand text-white d-flex align-items-center justify-content-center w-100 h-100">
+                                <i class="bi bi-controller fs-1"></i>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <h5 class="mb-1"><?= esc($game['name']) ?></h5>
+                    <p class="small text-soft mb-3"><?= esc($game['provider']) ?></p>
+                    <a href="<?= base_url($game['link'] ?? '#') ?>" class="btn btn-outline-brand w-100 rounded-pill">Top Up</a>
                 </div>
-                <h5 class="mb-1"><?= esc($game['name']) ?></h5>
-                <p class="small text-soft mb-3"><?= esc($game['provider']) ?></p>
-                <a href="<?= $game['link'] === '#' ? '#' : base_url($game['link']) ?>" class="btn btn-outline-brand w-100 rounded-pill">Top Up</a>
             </div>
-        </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="col-12 text-center py-5 text-muted">Belum ada game tersedia.</div>
+        <?php endif; ?>
     </div>
 </section>
 

@@ -14,7 +14,8 @@ class Home extends BaseController
 
     public function index(): string
     {
-        return $this->page('home');
+        $gameModel = new \App\Models\GameModel();
+        return view('v_home', ['games' => $gameModel->getAll()]);
     }
 
     public function dashboard()
@@ -40,7 +41,8 @@ class Home extends BaseController
 
     public function produk(): string
     {
-        return $this->page('produk');
+        $gameModel = new \App\Models\GameModel();
+        return view('v_produk', ['products' => $gameModel->getAll()]);
     }
 
     public function keranjang(): string
@@ -50,22 +52,55 @@ class Home extends BaseController
 
     public function detailMlbb(): string
     {
-        return $this->page('detail_mlbb');
+        $itemModel = new \App\Models\ItemModel();
+        $gameModel = new \App\Models\GameModel();
+        $game = $gameModel->getAll()[0] ?? null;
+        return view('v_detail_mlbb', [
+            'items' => $game ? $itemModel->getByGameId((int)$game['id']) : [],
+            'payments' => $this->getPaymentMethods(),
+        ]);
     }
 
     public function detailValorant(): string
     {
-        return $this->page('detail_valorant');
+        $itemModel = new \App\Models\ItemModel();
+        $gameModel = new \App\Models\GameModel();
+        $games = $gameModel->getAll();
+        $game = $games[2] ?? null;
+        return view('v_detail_valorant', [
+            'items' => $game ? $itemModel->getByGameId((int)$game['id']) : [],
+            'payments' => $this->getPaymentMethods(),
+        ]);
     }
 
     public function detailFf(): string
     {
-        return $this->page('detail_ff');
+        $itemModel = new \App\Models\ItemModel();
+        $gameModel = new \App\Models\GameModel();
+        $games = $gameModel->getAll();
+        $game = $games[3] ?? null;
+        return view('v_detail_ff', [
+            'items' => $game ? $itemModel->getByGameId((int)$game['id']) : [],
+            'payments' => $this->getPaymentMethods(),
+        ]);
     }
 
     public function detailMcgg(): string
     {
-        return $this->page('detail_mcgg');
+        $itemModel = new \App\Models\ItemModel();
+        $gameModel = new \App\Models\GameModel();
+        $games = $gameModel->getAll();
+        $game = $games[1] ?? null;
+        return view('v_detail_mcgg', [
+            'items' => $game ? $itemModel->getByGameId((int)$game['id']) : [],
+            'payments' => $this->getPaymentMethods(),
+        ]);
+    }
+
+    public function getPaymentMethods(): array
+    {
+        $pmModel = new \App\Models\PaymentMethodModel();
+        return $pmModel->getAll();
     }
 
     public function payment(): string
@@ -77,7 +112,7 @@ class Home extends BaseController
     {
         if (session()->get('isLoggedIn')) {
             if (session()->get('role') === 'Administrator') {
-                return redirect()->to('dashboard');
+                return redirect()->to('admin/dashboard');
             } else {
                 return redirect()->to('profile');
             }
@@ -100,6 +135,7 @@ class Home extends BaseController
         $user = $userModel->findByUsername($username);
 
         if ($user && password_verify($password, $user['password'])) {
+            $session->regenerate(); // Prevent session fixation
             $session->set([
                 'id'         => $user['id'],
                 'username'   => $user['username'],
@@ -110,7 +146,7 @@ class Home extends BaseController
             $session->setFlashdata('success', 'Selamat datang kembali, ' . esc($user['username']) . '!');
             
             if ($user['role'] === 'Administrator') {
-                return redirect()->to('dashboard');
+                return redirect()->to('admin/dashboard');
             } else {
                 return redirect()->to('profile');
             }
@@ -182,6 +218,8 @@ class Home extends BaseController
         $price = $parts[1];
 
         $txCode = 'DANTE-' . strtoupper(substr(md5(uniqid()), 0, 6));
+        $now = date('Y-m-d H:i:s');
+        $expiresAt = date('Y-m-d H:i:s', strtotime('+5 minutes'));
 
         $transactionData = [
             'transaction_code' => $txCode,
@@ -191,12 +229,11 @@ class Home extends BaseController
             'payment_method' => strtoupper($payment),
             'user_game_id' => $userId,
             'zone_game_id' => $zoneId,
-            'status' => 'Proses'
+            'status' => 'Proses',
+            'user_id' => ($session->get('isLoggedIn') && $session->get('role') === 'Client') ? (int)$session->get('id') : 0,
+            'created_at' => $now,
+            'expires_at' => $expiresAt,
         ];
-
-        if ($session->get('isLoggedIn') && $session->get('role') === 'Client') {
-            $transactionData['user_id'] = $session->get('id');
-        }
 
         $transactionModel = new \App\Models\TransactionModel();
         $transactionModel->save($transactionData);
@@ -220,6 +257,80 @@ class Home extends BaseController
         return view('v_profile', [
             'transactions' => $transactions
         ]);
+    }
+
+    public function paymentComplete()
+    {
+        $session = session();
+        $tx = $session->get('last_transaction');
+
+        if (!$tx || empty($tx['transaction_code'])) {
+            $session->setFlashdata('error', 'Tidak ada transaksi aktif.');
+            return redirect()->to('payment');
+        }
+
+        $proof = $this->request->getFile('payment_proof');
+        if (!$proof || !$proof->isValid()) {
+            $session->setFlashdata('error', 'Upload bukti pembayaran terlebih dahulu.');
+            return redirect()->to('payment');
+        }
+
+        if ($proof->getSize() > 2 * 1024 * 1024) {
+            $session->setFlashdata('error', 'Ukuran file maksimal 2MB.');
+            return redirect()->to('payment');
+        }
+
+        $mime = $proof->getMimeType();
+        if (!in_array($mime, ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'])) {
+            $session->setFlashdata('error', 'Format file harus JPG, PNG, atau WebP.');
+            return redirect()->to('payment');
+        }
+
+        $txCode = $tx['transaction_code'];
+        $proofDir = WRITEPATH . 'uploads/bukti/';
+        if (!is_dir($proofDir)) {
+            mkdir($proofDir, 0777, true);
+        }
+
+        $proofName = $txCode . '_' . date('YmdHis') . '.' . $proof->getExtension();
+        $proof->move($proofDir, $proofName);
+
+        $transactionModel = new \App\Models\TransactionModel();
+        $allTx = $transactionModel->getTransactions();
+
+        $updated = false;
+        foreach ($allTx as &$t) {
+            if (isset($t['transaction_code']) && $t['transaction_code'] === $txCode) {
+                $t['status'] = 'Selesai';
+                $t['payment_proof'] = 'uploads/bukti/' . $proofName;
+                $updated = true;
+                break;
+            }
+        }
+
+        if (!$updated) {
+            $session->setFlashdata('error', 'Transaksi tidak ditemukan.');
+            return redirect()->to('payment');
+        }
+
+        file_put_contents(WRITEPATH . 'transactions.json', json_encode(array_values($allTx), JSON_PRETTY_PRINT));
+
+        $tx['status'] = 'Selesai';
+        $tx['payment_proof'] = 'uploads/bukti/' . $proofName;
+        $session->set('last_transaction', $tx);
+
+        $html = view('v_download_history', [
+            'transactions' => [$tx],
+            'username' => $session->get('username') ?? 'Guest',
+        ]);
+
+        $filename = 'receipt-' . $txCode . '.pdf';
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream($filename, ['Attachment' => true]);
     }
 
     public function logout()

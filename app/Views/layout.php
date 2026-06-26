@@ -554,7 +554,7 @@
                                 </li>
                                 <li><hr class="dropdown-divider opacity-10"></li>
                                 <?php if (session()->get('role') === 'Administrator'): ?>
-                                    <li><a class="dropdown-item rounded-3 text-dark" href="<?= base_url('dashboard') ?>"><i class="bi bi-speedometer2 me-2"></i> Dashboard Admin</a></li>
+                                    <li><a class="dropdown-item rounded-3 text-dark" href="<?= base_url('admin/dashboard') ?>"><i class="bi bi-speedometer2 me-2"></i> Dashboard Admin</a></li>
                                 <?php elseif (session()->get('role') === 'Client'): ?>
                                     <li><a class="dropdown-item rounded-3 text-dark" href="<?= base_url('profile') ?>"><i class="bi bi-person-badge-fill me-2"></i> Profil Saya</a></li>
                                 <?php endif; ?>
@@ -647,22 +647,5 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="<?= base_url('assets/js/fluid-glass.js') ?>"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Navbar liquid glass (iOS 26 style)
-            new FluidGlass('.navbar', {
-                mode: 'navbar',
-                intensity: 1.0
-            });
-
-            // Footer liquid glass (iOS 26 style)
-            new FluidGlass('.site-footer-wide', {
-                mode: 'footer',
-                intensity: 0.95
-            });
-        });
-    </script>
 </body>
 </html>

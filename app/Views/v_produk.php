@@ -19,35 +19,33 @@
 </section>
 
 <section class="row g-3">
-    <?php
-    $products = [
-        ['title' => 'Mobile Legends', 'provider' => 'Moonton', 'img' => 'iconMl.png', 'badge' => 'Populer', 'link' => 'detail-mlbb'],
-        ['title' => 'Magic Chess Go Go', 'provider' => 'Moonton', 'img' => 'iconMcgg.png', 'badge' => 'Cepat', 'link' => 'detail-mcgg'],
-        ['title' => 'Valorant', 'provider' => 'Riot Games', 'img' => 'icon valo.jpg', 'badge' => 'Recommended', 'link' => 'detail-valorant'],
-        ['title' => 'Free Fire', 'provider' => 'Garena', 'img' => 'iconff.jpg', 'badge' => 'Best Seller', 'link' => 'detail-ff'],
-    ];
-
-    foreach ($products as $product): ?>
-    <div class="col-6 col-lg-3">
-        <div class="product-card h-100 p-3">
-            <div class="position-relative mb-3">
-                <div class="ratio ratio-4x3 rounded-4 overflow-hidden border">
-                    <?php if (isset($product['img'])): ?>
-                        <img src="<?= base_url('assets/img/' . $product['img']) ?>" class="w-100 h-100 object-fit-cover" alt="<?= esc($product['title']) ?>">
-                    <?php else: ?>
-                        <div class="bg-brand text-white d-flex align-items-center justify-content-center w-100 h-100">
-                            <i class="bi bi-<?= esc($product['icon']) ?> display-5"></i>
-                        </div>
+    <?php if (!empty($products)): ?>
+        <?php foreach ($products as $product): ?>
+        <div class="col-6 col-lg-3">
+            <div class="product-card h-100 p-3">
+                <div class="position-relative mb-3">
+                    <div class="ratio ratio-4x3 rounded-4 overflow-hidden border">
+                        <?php if (!empty($product['img'])): ?>
+                            <img src="<?= base_url('assets/img/' . $product['img']) ?>" class="w-100 h-100 object-fit-cover" alt="<?= esc($product['name']) ?>">
+                        <?php else: ?>
+                            <div class="bg-brand text-white d-flex align-items-center justify-content-center w-100 h-100">
+                                <i class="bi bi-controller display-5"></i>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <?php if (!empty($product['badge'])): ?>
+                    <span class="badge text-bg-light position-absolute top-0 end-0 m-2 rounded-pill border"><?= esc($product['badge']) ?></span>
                     <?php endif; ?>
                 </div>
-                <span class="badge text-bg-light position-absolute top-0 end-0 m-2 rounded-pill border"><?= esc($product['badge']) ?></span>
+                <h5 class="mb-1"><?= esc($product['name']) ?></h5>
+                <p class="text-soft small mb-3"><?= esc($product['provider']) ?></p>
+                <a href="<?= base_url($product['link'] ?? '#') ?>" class="btn btn-brand w-100 rounded-pill">Mulai Top Up</a>
             </div>
-            <h5 class="mb-1"><?= esc($product['title']) ?></h5>
-            <p class="text-soft small mb-3"><?= esc($product['provider']) ?></p>
-            <a href="<?= $product['link'] === '#' ? '#' : base_url($product['link']) ?>" class="btn btn-brand w-100 rounded-pill">Mulai Top Up</a>
         </div>
-    </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <div class="col-12 text-center py-5 text-muted">Belum ada produk tersedia.</div>
+    <?php endif; ?>
 </section>
 
 <?= $this->endSection() ?>

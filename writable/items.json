@@ -1,0 +1,317 @@
+[
+    {
+        "id": 1,
+        "game_id": 1,
+        "title": "5 Diamonds",
+        "price": 2000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 2,
+        "game_id": 1,
+        "title": "86 Diamonds",
+        "price": 20000,
+        "original_price": 25000,
+        "discount": "20%",
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 3,
+        "game_id": 1,
+        "title": "172 Diamonds",
+        "price": 40000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 4,
+        "game_id": 1,
+        "title": "257 Diamonds",
+        "price": 58000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 5,
+        "game_id": 1,
+        "title": "344 Diamonds",
+        "price": 75000,
+        "original_price": 90000,
+        "discount": "17%",
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 6,
+        "game_id": 1,
+        "title": "429 Diamonds",
+        "price": 92000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 7,
+        "game_id": 1,
+        "title": "514 Diamonds",
+        "price": 109000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 8,
+        "game_id": 1,
+        "title": "600 Diamonds",
+        "price": 125000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 9,
+        "game_id": 1,
+        "title": "706 Diamonds",
+        "price": 145000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 10,
+        "game_id": 1,
+        "title": "875 Diamonds",
+        "price": 175000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 11,
+        "game_id": 1,
+        "title": "963 Diamonds",
+        "price": 195000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 12,
+        "game_id": 1,
+        "title": "2000 Diamonds",
+        "price": 380000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 13,
+        "game_id": 2,
+        "title": "5 Magic Dust",
+        "price": 2000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 14,
+        "game_id": 2,
+        "title": "60 Magic Dust",
+        "price": 15000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 15,
+        "game_id": 2,
+        "title": "120 Magic Dust",
+        "price": 28000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 16,
+        "game_id": 2,
+        "title": "200 Magic Dust",
+        "price": 45000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 17,
+        "game_id": 2,
+        "title": "280 Magic Dust",
+        "price": 60000,
+        "original_price": 75000,
+        "discount": "20%",
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 18,
+        "game_id": 2,
+        "title": "344 Magic Dust",
+        "price": 72000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 19,
+        "game_id": 3,
+        "title": "125 Points",
+        "price": 25000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 20,
+        "game_id": 3,
+        "title": "420 Points",
+        "price": 75000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 21,
+        "game_id": 3,
+        "title": "700 Points",
+        "price": 120000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 22,
+        "game_id": 3,
+        "title": "1375 Points",
+        "price": 225000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 23,
+        "game_id": 3,
+        "title": "2400 Points",
+        "price": 385000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 24,
+        "game_id": 3,
+        "title": "5350 Points",
+        "price": 825000,
+        "original_price": 950000,
+        "discount": "13%",
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 25,
+        "game_id": 3,
+        "title": "8150 Points",
+        "price": 1225000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 26,
+        "game_id": 4,
+        "title": "5 Diamonds",
+        "price": 1000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 27,
+        "game_id": 4,
+        "title": "70 Diamonds",
+        "price": 8000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 28,
+        "game_id": 4,
+        "title": "100 Diamonds",
+        "price": 12000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 29,
+        "game_id": 4,
+        "title": "140 Diamonds",
+        "price": 16000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 30,
+        "game_id": 4,
+        "title": "355 Diamonds",
+        "price": 37000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 31,
+        "game_id": 4,
+        "title": "500 Diamonds",
+        "price": 51000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 32,
+        "game_id": 4,
+        "title": "720 Diamonds",
+        "price": 73000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 33,
+        "game_id": 4,
+        "title": "1000 Diamonds",
+        "price": 100000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 34,
+        "game_id": 4,
+        "title": "2000 Diamonds",
+        "price": 200000,
+        "original_price": 220000,
+        "discount": "9%",
+        "created_at": "2026-06-26 17:14:53"
+    },
+    {
+        "id": 35,
+        "game_id": 4,
+        "title": "7290 Diamonds",
+        "price": 720000,
+        "original_price": null,
+        "discount": null,
+        "created_at": "2026-06-26 17:14:53"
+    }
+]

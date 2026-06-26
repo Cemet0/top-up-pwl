@@ -1,236 +1,65 @@
- <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+<?php
+$currentUri = trim(service('uri')->getPath(), '/');
+$isActive = fn($path) => str_starts_with($currentUri, $path) ? 'active' : '';
+$isOpen = fn($path) => str_starts_with($currentUri, $path) ? 'show' : '';
+?>
 
+<aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+            <a class="nav-link <?= $isActive('admin/dashboard') ?>" href="<?= base_url('admin/dashboard') ?>">
+                <i class="bi bi-grid"></i><span>Dashboard</span>
+            </a>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link <?= $isActive('/admin/games') ? '' : 'collapsed' ?>" data-bs-target="#games-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-controller"></i><span>Games / Produk</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="games-nav" class="nav-content collapse <?= $isOpen('/admin/games') ?>" data-bs-parent="#sidebar-nav">
+                <li><a href="<?= base_url('admin/games') ?>" class="<?= $currentUri === 'admin/games' ? 'active' : '' ?>"><i class="bi bi-circle"></i><span>Daftar Game</span></a></li>
+                <li><a href="<?= base_url('admin/games/create') ?>" class="<?= $currentUri === 'admin/games/create' ? 'active' : '' ?>"><i class="bi bi-circle"></i><span>Tambah Game</span></a></li>
+                <li><a href="<?= base_url('admin/items') ?>" class="<?= $currentUri === 'admin/items' ? 'active' : '' ?>"><i class="bi bi-circle"></i><span>Daftar Nominal</span></a></li>
+            </ul>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Alerts</span>
+        <li class="nav-item">
+            <a class="nav-link <?= $isActive('/admin/payments') ? '' : 'collapsed' ?>" data-bs-target="#payments-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-credit-card"></i><span>Pembayaran</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-          </li>
-          <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Accordion</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-badges.html">
-              <i class="bi bi-circle"></i><span>Badges</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-breadcrumbs.html">
-              <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-buttons.html">
-              <i class="bi bi-circle"></i><span>Buttons</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-cards.html">
-              <i class="bi bi-circle"></i><span>Cards</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-carousel.html">
-              <i class="bi bi-circle"></i><span>Carousel</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-list-group.html">
-              <i class="bi bi-circle"></i><span>List group</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-modal.html">
-              <i class="bi bi-circle"></i><span>Modal</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-tabs.html">
-              <i class="bi bi-circle"></i><span>Tabs</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-pagination.html">
-              <i class="bi bi-circle"></i><span>Pagination</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-progress.html">
-              <i class="bi bi-circle"></i><span>Progress</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-spinners.html">
-              <i class="bi bi-circle"></i><span>Spinners</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-tooltips.html">
-              <i class="bi bi-circle"></i><span>Tooltips</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
+            <ul id="payments-nav" class="nav-content collapse <?= $isOpen('/admin/payments') ?>" data-bs-parent="#sidebar-nav">
+                <li><a href="<?= base_url('admin/payments') ?>" class="<?= $currentUri === 'admin/payments' ? 'active' : '' ?>"><i class="bi bi-circle"></i><span>Metode Pembayaran</span></a></li>
+                <li><a href="<?= base_url('admin/payments/create') ?>" class="<?= $currentUri === 'admin/payments/create' ? 'active' : '' ?>"><i class="bi bi-circle"></i><span>Tambah Metode</span></a></li>
+            </ul>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="forms-elements.html">
-              <i class="bi bi-circle"></i><span>Form Elements</span>
+        <li class="nav-item">
+            <a class="nav-link <?= $isActive('/admin/transactions') ? '' : 'collapsed' ?>" data-bs-target="#transactions-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-receipt"></i><span>Transaksi</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-          </li>
-          <li>
-            <a href="forms-layouts.html">
-              <i class="bi bi-circle"></i><span>Form Layouts</span>
+            <ul id="transactions-nav" class="nav-content collapse <?= $isOpen('/admin/transactions') ?>" data-bs-parent="#sidebar-nav">
+                <li><a href="<?= base_url('admin/transactions') ?>" class="<?= $currentUri === 'admin/transactions' ? 'active' : '' ?>"><i class="bi bi-circle"></i><span>Semua Transaksi</span></a></li>
+            </ul>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link <?= $isActive('/admin/users') ? '' : 'collapsed' ?>" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-people"></i><span>Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-          </li>
-          <li>
-            <a href="forms-editors.html">
-              <i class="bi bi-circle"></i><span>Form Editors</span>
+            <ul id="users-nav" class="nav-content collapse <?= $isOpen('/admin/users') ?>" data-bs-parent="#sidebar-nav">
+                <li><a href="<?= base_url('admin/users') ?>" class="<?= $currentUri === 'admin/users' ? 'active' : '' ?>"><i class="bi bi-circle"></i><span>Daftar Pengguna</span></a></li>
+            </ul>
+        </li>
+
+        <li class="nav-item mt-3">
+            <a class="nav-link" href="<?= base_url('/') ?>" target="_blank">
+                <i class="bi bi-house-door"></i><span>Ke Situs Utama</span>
             </a>
-          </li>
-          <li>
-            <a href="forms-validation.html">
-              <i class="bi bi-circle"></i><span>Form Validation</span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-danger" href="<?= base_url('logout') ?>">
+                <i class="bi bi-box-arrow-right"></i><span>Keluar</span>
             </a>
-          </li>
-        </ul>
-      </li><!-- End Forms Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>General Tables</span>
-            </a>
-          </li>
-          <li>
-            <a href="tables-data.html" class="active">
-              <i class="bi bi-circle"></i><span>Data Tables</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Tables Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="charts-chartjs.html">
-              <i class="bi bi-circle"></i><span>Chart.js</span>
-            </a>
-          </li>
-          <li>
-            <a href="charts-apexcharts.html">
-              <i class="bi bi-circle"></i><span>ApexCharts</span>
-            </a>
-          </li>
-          <li>
-            <a href="charts-echarts.html">
-              <i class="bi bi-circle"></i><span>ECharts</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Charts Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="icons-bootstrap.html">
-              <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
-            </a>
-          </li>
-          <li>
-            <a href="icons-remix.html">
-              <i class="bi bi-circle"></i><span>Remix Icons</span>
-            </a>
-          </li>
-          <li>
-            <a href="icons-boxicons.html">
-              <i class="bi bi-circle"></i><span>Boxicons</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Icons Nav -->
-
-      <li class="nav-heading">Pages</li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
-        </a>
-      </li><!-- End F.A.Q Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-envelope"></i>
-          <span>Contact</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Register</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
-          <i class="bi bi-dash-circle"></i>
-          <span>Error 404</span>
-        </a>
-      </li><!-- End Error 404 Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
-        </a>
-      </li><!-- End Blank Page Nav -->
-
+        </li>
     </ul>
-
-  </aside><!-- End Sidebar-->
+</aside>

@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "Mobile Legends",
+        "provider": "Moonton",
+        "img": "iconMl.png",
+        "link": "detail-mlbb",
+        "badge": "Populer",
+        "created_at": "2026-06-26 17:10:51"
+    },
+    {
+        "id": 2,
+        "name": "Magic Chess Go Go",
+        "provider": "Moonton",
+        "img": "iconMcgg.png",
+        "link": "detail-mcgg",
+        "badge": "Cepat",
+        "created_at": "2026-06-26 17:10:51"
+    },
+    {
+        "id": 3,
+        "name": "Valorant",
+        "provider": "Riot Games",
+        "img": "icon valo.jpg",
+        "link": "detail-valorant",
+        "badge": "Recommended",
+        "created_at": "2026-06-26 17:10:51"
+    },
+    {
+        "id": 4,
+        "name": "Free Fire",
+        "provider": "Garena",
+        "img": "iconff.jpg",
+        "link": "detail-ff",
+        "badge": "Best Seller",
+        "created_at": "2026-06-26 17:10:51"
+    },
+    {
+        "name": "tes",
+        "provider": "tes",
+        "img": "tes",
+        "link": "tes.com",
+        "badge": "tes",
+        "id": 5,
+        "created_at": "2026-06-26 17:14:07"
+    }
+]
