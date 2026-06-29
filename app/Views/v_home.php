@@ -87,28 +87,31 @@
             <?php
             $promos = [
                 [
-                    'title'    => '1 Month VIP',
-                    'discount' => '51%',
-                    'original' => 'Rp56.000',
-                    'price'    => 'Rp27.467',
+                    'title'    => 'Weekly Diamond Pass',
+                    'discount' => '7%',
+                    'original' => 'Rp30.000',
+                    'price'    => 'Rp27.949',
                     'color'    => '#28a745',
-                    'icon'     => 'star-fill',
+                    'img'      => 'icon wdp.jpg',
+                    'link'     => 'detail-mlbb',
                 ],
                 [
-                    'title'    => '3 Month VIP',
-                    'discount' => '46,4%',
-                    'original' => 'Rp135.000',
-                    'price'    => 'Rp72.311',
+                    'title'    => 'Free Fire - 720 Diamonds',
+                    'discount' => '20%',
+                    'original' => 'Rp100.000',
+                    'price'    => 'Rp80.000',
                     'color'    => '#125dff',
-                    'icon'     => 'star-half',
+                    'img'      => 'iconff.jpg',
+                    'link'     => 'detail-ff',
                 ],
                 [
-                    'title'    => '12 Month VIP',
-                    'discount' => '43,9%',
-                    'original' => 'Rp449.000',
-                    'price'    => 'Rp251.687',
+                    'title'    => 'Valorant - 1000 VP',
+                    'discount' => '10%',
+                    'original' => 'Rp150.000',
+                    'price'    => 'Rp135.000',
                     'color'    => '#e83e8c',
-                    'icon'     => 'gem',
+                    'img'      => 'icon valo.jpg',
+                    'link'     => 'detail-valorant',
                 ],
             ];
             foreach ($promos as $promo): ?>
@@ -121,8 +124,12 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center gap-3 mb-3">
-                        <div class="rounded-3 d-flex align-items-center justify-content-center" style="width:48px;height:48px;background:<?= esc($promo['color']) ?>20;">
-                            <i class="bi bi-<?= esc($promo['icon']) ?> fs-4" style="color:<?= esc($promo['color']) ?>"></i>
+                        <div class="rounded-3 d-flex align-items-center justify-content-center overflow-hidden" style="width:48px;height:48px;background:<?= esc($promo['color']) ?>20;">
+                            <?php if (isset($promo['img'])): ?>
+                                <img src="<?= base_url('assets/img/' . $promo['img']) ?>" class="w-100 h-100 object-fit-cover" alt="<?= esc($promo['title']) ?>">
+                            <?php else: ?>
+                                <i class="bi bi-<?= esc($promo['icon']) ?> fs-4" style="color:<?= esc($promo['color']) ?>"></i>
+                            <?php endif; ?>
                         </div>
                         <div>
                             <div class="fw-bold"><?= esc($promo['title']) ?></div>
@@ -131,7 +138,7 @@
                     </div>
                     <div class="small text-soft text-decoration-line-through"><?= esc($promo['original']) ?></div>
                     <div class="fw-bold fs-5" style="color:<?= esc($promo['color']) ?>"><?= esc($promo['price']) ?></div>
-                    <a href="<?= base_url('produk') ?>" class="btn btn-brand w-100 rounded-pill mt-3 btn-sm">Beli Sekarang</a>
+                    <a href="<?= base_url($promo['link'] ?? 'produk') ?>" class="btn btn-brand w-100 rounded-pill mt-3 btn-sm">Beli Sekarang</a>
                 </div>
             </div>
             <?php endforeach; ?>

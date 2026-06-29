@@ -95,18 +95,17 @@
         "payment_proof": "uploads\/bukti\/DANTE-79652B_20260626174015.png"
     },
     {
-        "transaction_code": "DANTE-1D9E48",
+        "transaction_code": "DANTE-51070B",
         "game_name": "Mobile Legends",
-        "nominal": "86 Diamonds",
-        "price": "Rp 20.000",
-        "payment_method": "BCA",
-        "user_game_id": "77777777",
-        "zone_game_id": "7777777",
-        "status": "Selesai",
+        "nominal": "5 Diamonds",
+        "price": "Rp 2.000",
+        "payment_method": "QRIS",
+        "user_game_id": "1231",
+        "zone_game_id": "333",
+        "status": "Proses",
         "user_id": 0,
-        "created_at": "2026-06-26 17:42:44",
-        "expires_at": "2026-06-26 17:47:44",
-        "id": 8,
-        "payment_proof": "uploads\/bukti\/DANTE-1D9E48_20260626174257.png"
+        "created_at": "2026-06-29 09:29:32",
+        "expires_at": "2026-06-29 09:34:32",
+        "id": 8
     }
 ]
